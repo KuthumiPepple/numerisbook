@@ -8,8 +8,8 @@ CREATE TABLE "invoices" (
   "sender_email" varchar NOT NULL,
   "sender_phone" varchar NOT NULL,
   "sender_address" varchar NOT NULL,
-  "issue_date" timestamptz NOT NULL DEFAULT (now()),
-  "due_date" timestamptz NOT NULL DEFAULT (now() + interval '30 days'),
+  "issue_date" varchar NOT NULL,
+  "due_date" varchar NOT NULL,
   "status" varchar NOT NULL DEFAULT 'draft',
   "subtotal" varchar NOT NULL,
   "discount_rate" varchar NOT NULL,
@@ -17,7 +17,8 @@ CREATE TABLE "invoices" (
   "total_amount" varchar NOT NULL,
   "payment_info" varchar NOT NULL,
   "billing_currency" varchar NOT NULL DEFAULT 'USD',
-  "note" varchar NOT NULL DEFAULT 'Thank you for your patronage'
+  "note" varchar NOT NULL DEFAULT 'Thank you for your patronage',
+  "created_at" timestamptz NOT NULL DEFAULT (now())
 );
 
 CREATE TABLE "line_items" (
